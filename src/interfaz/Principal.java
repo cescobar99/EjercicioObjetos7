@@ -17,6 +17,7 @@ public class Principal extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
+    Hora h, h2;
     public Principal() {
         initComponents();
         cmdGuardar.setEnabled(true);
@@ -65,6 +66,8 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("Horas");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(309, 11, -1, -1));
 
@@ -207,22 +210,22 @@ public class Principal extends javax.swing.JFrame {
     private void cmdGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdGuardarActionPerformed
     int hora1, min1, seg1, hora2, min2, seg2;
         if (txtHora1.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite Hora 1", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite la Hora 1", "error", JOptionPane.ERROR_MESSAGE);
             txtHora1.requestFocusInWindow();
         } else if (txtMinutos1.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite Minutos de la hora 1", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite los Minutos de la hora 1", "error", JOptionPane.ERROR_MESSAGE);
             txtMinutos1.requestFocusInWindow();
         } else if (txtSegundos1.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite Segundos de la hora 1", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite los Segundos de la hora 1", "error", JOptionPane.ERROR_MESSAGE);
             txtSegundos1.requestFocusInWindow();
         } else if (txtHoras2.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite Hora 2", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite la Hora 2", "error", JOptionPane.ERROR_MESSAGE);
             txtHoras2.requestFocusInWindow();
         } else if (txtMinutos2.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite Minutos de la hora 2", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite los Minutos de la hora 2", "error", JOptionPane.ERROR_MESSAGE);
             txtMinutos2.requestFocusInWindow();
         } else if (txtSegundos2.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite Segundos de la hora 2", "error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite los Segundos de la hora 2", "error", JOptionPane.ERROR_MESSAGE);
             txtSegundos2.requestFocusInWindow();
         } else {
             hora1 = Integer.parseInt(txtHora1.getText());
@@ -244,20 +247,23 @@ public class Principal extends javax.swing.JFrame {
             txtHoras2.setEditable(false);
             txtMinutos2.setEditable(false);
             txtSegundos2.setEditable(false);
-            JOptionPane.showMessageDialog(this, "Horas guardadas correctamente");
+            JOptionPane.showMessageDialog(this, "Horas guardadas exitosamente");
         }
     }//GEN-LAST:event_cmdGuardarActionPerformed
 
     private void cmdValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdValidarActionPerformed
-    String H1, H2;
-    H1 = h.validacion();
-    JOptionPane.showMessageDialog(this, "La hora 1 " + H1);
-    H2 = h2.validacion();
-    JOptionPane.showMessageDialog(this, "La hora 2 " + H2);
+    String validacion1, validacion2;
+    try {
+    validacion1= h.validacion();
+    JOptionPane.showMessageDialog(this, "La hora #1 es: " + validacion1);
+    validacion2= h2.validacion();
+    JOptionPane.showMessageDialog(this, "La hora #2 es: " + validacion2);
+    }catch(NullPointerException e){
+    }
     }//GEN-LAST:event_cmdValidarActionPerformed
 
     private void cmdLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLimpiarActionPerformed
-    cmdGuardar.setEnabled(true);
+        cmdGuardar.setEnabled(true);
         cmdComparar.setEnabled(false);
         cmdMostrar.setEnabled(false);
         cmdValidar.setEnabled(false);
@@ -279,16 +285,22 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmdCompararActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCompararActionPerformed
     String c;
+    try{
     c = h.comparacion(h2);
     JOptionPane.showMessageDialog(this, c);
+    }catch(NullPointerException e){}
+    
+    
     }//GEN-LAST:event_cmdCompararActionPerformed
 
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
     String aux1, aux2;
+    try{
     aux1 = h.mostrar();
     aux2 = h2.mostrar();
-    JOptionPane.showMessageDialog(this, "La hora 1 es: " + aux1);
-    JOptionPane.showMessageDialog(this, "La hora 2 es: " + aux2);
+    JOptionPane.showMessageDialog(this, "La hora 1 es " + aux1);
+    JOptionPane.showMessageDialog(this, "La hora 2 es " + aux2);
+    }catch(NullPointerException e){}
     }//GEN-LAST:event_cmdMostrarActionPerformed
 
     private void txtHora1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHora1KeyTyped

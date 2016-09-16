@@ -10,5 +10,9 @@ package interfaz;
  * @author User
  */
 class h {
+
+    static String validacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
